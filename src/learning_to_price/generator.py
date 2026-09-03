@@ -7,7 +7,7 @@ from dataclasses import dataclass
 
 import numpy as np
 
-from learning_to_price.domain import CVRPTWInstance, Customer, Distribution, WindowRegime
+from learning_to_price.domain import Customer, CVRPTWInstance, Distribution, WindowRegime
 from learning_to_price.geometry import euclidean_distance
 
 
