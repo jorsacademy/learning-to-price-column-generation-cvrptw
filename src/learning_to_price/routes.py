@@ -121,9 +121,7 @@ def route_cost(instance: CVRPTWInstance, route: Route) -> float:
 def singleton_routes(instance: CVRPTWInstance) -> tuple[Route, ...]:
     routes = tuple(Route((node,)) for node in range(1, instance.customer_count + 1))
     infeasible = [
-        route.customers[0]
-        for route in routes
-        if not evaluate_route(instance, route).feasible
+        route.customers[0] for route in routes if not evaluate_route(instance, route).feasible
     ]
     if infeasible:
         raise ValueError(f"singleton routes are infeasible for customers {infeasible}")
