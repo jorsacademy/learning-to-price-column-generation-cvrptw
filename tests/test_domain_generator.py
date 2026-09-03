@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from learning_to_price.domain import CVRPTWInstance, Customer, load_instance, save_instance
+from learning_to_price.domain import Customer, CVRPTWInstance, load_instance, save_instance
 from learning_to_price.generator import generate_solomon_like
 from learning_to_price.routes import Route, evaluate_route
 
