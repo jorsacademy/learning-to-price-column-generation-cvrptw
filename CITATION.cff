@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this software in academic work, cite the repository and the exact version or commit."
+title: "Learning to Price Column Generation for CVRPTW"
+type: software
+authors:
+  - alias: jorsacademy
+version: 0.1.0
+date-released: 2026-09-03
+repository-code: "https://github.com/jorsacademy/learning-to-price-column-generation-cvrptw"
+license: PolyForm-Noncommercial-1.0.0
+keywords:
+  - operations research
+  - column generation
+  - vehicle routing with time windows
+  - machine learning
+  - pricing problem

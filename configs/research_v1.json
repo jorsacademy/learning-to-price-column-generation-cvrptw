@@ -1,0 +1,29 @@
+{
+  "protocol_version": "research_v1",
+  "training": {
+    "instances": 24,
+    "customers": 8,
+    "seed_start": 10000,
+    "distribution": "uniform",
+    "window_regime": "wide",
+    "top_k_pricing_routes": 3,
+    "validation_fraction": 0.2,
+    "split_seed": 2026,
+    "hidden_dim": 32,
+    "epochs": 80,
+    "batch_size": 512,
+    "learning_rate": 0.002
+  },
+  "column_generation": {
+    "reduced_cost_tolerance": 1e-8,
+    "keep_ratio": 0.35,
+    "min_outgoing": 2,
+    "max_iterations": 200
+  },
+  "test_scenarios": [
+    {"name": "in_distribution", "customers": 8, "seed_start": 30000, "distribution": "uniform", "window_regime": "wide"},
+    {"name": "size_shift", "customers": 10, "seed_start": 40000, "distribution": "uniform", "window_regime": "wide"},
+    {"name": "clustered_shift", "customers": 8, "seed_start": 50000, "distribution": "clustered", "window_regime": "wide"},
+    {"name": "tight_windows_shift", "customers": 8, "seed_start": 60000, "distribution": "uniform", "window_regime": "tight"}
+  ]
+}
