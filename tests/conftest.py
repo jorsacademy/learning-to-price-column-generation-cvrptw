@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from learning_to_price.domain import CVRPTWInstance, Customer
+from learning_to_price.domain import Customer, CVRPTWInstance
 
 
 @pytest.fixture
