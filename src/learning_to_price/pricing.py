@@ -225,9 +225,8 @@ def price_routes(
                 route = Route(new_path)
                 if route not in excluded:
                     total_reduced = new_reduced_open + float(matrix[next_node, 0])
-                    total_cost = (
-                        instance.fixed_vehicle_cost
-                        + sum(float(matrix[i, j]) for i, j in route.arcs())
+                    total_cost = instance.fixed_vehicle_cost + sum(
+                        float(matrix[i, j]) for i, j in route.arcs()
                     )
                     consider(
                         PricedRoute(
