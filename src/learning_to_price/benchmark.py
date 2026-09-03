@@ -143,8 +143,8 @@ def run_benchmark(
             )
 
     summary: dict[str, dict[str, float]] = {}
-    for mode in sorted({row.mode for row in rows}):
-        selected = [row for row in rows if row.mode == mode]
+    for mode_name in sorted({row.mode for row in rows}):
+        selected = [row for row in rows if row.mode == mode_name]
 
         def mean(attribute: str, selected_rows: list[BenchmarkRow] = selected) -> float:
             values = [
@@ -154,7 +154,7 @@ def run_benchmark(
             ]
             return statistics.fmean(values) if values else float("nan")
 
-        summary[mode] = {
+        summary[mode_name] = {
             "instances": float(len(selected)),
             "certified_rate": statistics.fmean(float(row.globally_certified) for row in selected),
             "mean_lp_gap_percent": mean("lp_gap_percent"),
