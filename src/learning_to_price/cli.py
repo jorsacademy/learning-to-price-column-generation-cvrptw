@@ -34,9 +34,7 @@ def _print_json(payload: object) -> None:
     print(json.dumps(payload, indent=2, ensure_ascii=False))
 
 
-def _generated_instances(
-    args: argparse.Namespace, *, seed_offset: int = 0
-) -> list[CVRPTWInstance]:
+def _generated_instances(args: argparse.Namespace, *, seed_offset: int = 0) -> list[CVRPTWInstance]:
     return [
         generate_solomon_like(
             args.customers,
