@@ -146,10 +146,10 @@ def run_benchmark(
     for mode in sorted({row.mode for row in rows}):
         selected = [row for row in rows if row.mode == mode]
 
-        def mean(attribute: str) -> float:
+        def mean(attribute: str, selected_rows: list[BenchmarkRow] = selected) -> float:
             values = [
                 float(value)
-                for row in selected
+                for row in selected_rows
                 if (value := getattr(row, attribute)) is not None
             ]
             return statistics.fmean(values) if values else float("nan")
