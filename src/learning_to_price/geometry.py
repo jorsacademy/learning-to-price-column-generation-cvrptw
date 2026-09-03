@@ -19,7 +19,7 @@ def distance_matrix(instance: CVRPTWInstance) -> np.ndarray:
         dtype=float,
     )
     delta = coordinates[:, None, :] - coordinates[None, :, :]
-    matrix = np.sqrt(np.sum(delta * delta, axis=2))
+    matrix: np.ndarray = np.asarray(np.sqrt(np.sum(delta * delta, axis=2)), dtype=float)
     matrix.setflags(write=False)
     return matrix
 
