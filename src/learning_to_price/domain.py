@@ -143,6 +143,17 @@ class CVRPTWInstance:
         raw_customers = payload.get("customers")
         if not isinstance(raw_customers, list):
             raise ValueError("customers must be a list")
+        capacity_value = payload.get("capacity")
+        if isinstance(capacity_value, bool) or not isinstance(
+            capacity_value, (int, float, str)
+        ):
+            raise ValueError("capacity must be numeric")
+        fixed_vehicle_cost_value = payload.get("fixed_vehicle_cost", 0.0)
+        if isinstance(fixed_vehicle_cost_value, bool) or not isinstance(
+            fixed_vehicle_cost_value, (int, float, str)
+        ):
+            raise ValueError("fixed_vehicle_cost must be numeric")
+
         parsed_customers: list[Customer] = []
         for item in raw_customers:
             if not isinstance(item, dict):
@@ -162,12 +173,12 @@ class CVRPTWInstance:
         return cls(
             name=str(payload["name"]),
             customers=customers,
-            capacity=float(payload["capacity"]),
+            capacity=float(capacity_value),
             depot_x=float(depot["x"]),
             depot_y=float(depot["y"]),
             depot_ready_time=float(depot.get("ready_time", 0.0)),
             depot_due_time=float(depot["due_time"]),
-            fixed_vehicle_cost=float(payload.get("fixed_vehicle_cost", 0.0)),
+            fixed_vehicle_cost=float(fixed_vehicle_cost_value),
         )
 
 
