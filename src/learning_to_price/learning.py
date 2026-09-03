@@ -60,7 +60,11 @@ class NumpyMLPArcScorer:
     @staticmethod
     def _sigmoid(logits: np.ndarray) -> np.ndarray:
         clipped = np.clip(logits, -40.0, 40.0)
-        return 1.0 / (1.0 + np.exp(-clipped))
+        probabilities: np.ndarray = np.asarray(
+            1.0 / (1.0 + np.exp(-clipped)),
+            dtype=float,
+        )
+        return probabilities
 
     def _standardize(self, features: np.ndarray) -> np.ndarray:
         features = np.asarray(features, dtype=float)
