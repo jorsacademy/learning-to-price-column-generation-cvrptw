@@ -83,7 +83,10 @@ def generate_solomon_like(
         time = 0.0
         previous_xy = depot
         for node in route:
-            node_xy = tuple(float(value) for value in coordinates[node - 1])
+            node_xy = (
+                float(coordinates[node - 1, 0]),
+                float(coordinates[node - 1, 1]),
+            )
             arrival = time + euclidean_distance(previous_xy, node_xy)
             width = base_width * float(rng.uniform(0.85, 1.15))
             left = width * float(rng.uniform(0.15, 0.35))
