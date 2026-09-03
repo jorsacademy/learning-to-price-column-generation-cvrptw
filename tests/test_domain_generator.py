@@ -14,8 +14,7 @@ def test_generator_is_deterministic_and_has_feasible_witness() -> None:
     second = generate_solomon_like(8, seed=17, distribution="clustered", window_regime="tight")
     assert first == second
     assert all(
-        evaluate_route(first.instance, Route(route)).feasible
-        for route in first.witness_routes
+        evaluate_route(first.instance, Route(route)).feasible for route in first.witness_routes
     )
     visited = sorted(node for route in first.witness_routes for node in route)
     assert visited == list(range(1, 9))
