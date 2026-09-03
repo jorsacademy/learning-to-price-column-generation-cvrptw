@@ -188,7 +188,11 @@ def split_by_instance(
         min(len(unique_ids) - 1, round(len(unique_ids) * validation_fraction)),
     )
     validation_ids = set(int(value) for value in shuffled[:validation_count])
-    validation_mask = np.asarray([int(value) in validation_ids for value in dataset.instance_ids])
+    validation_mask: np.ndarray = np.asarray(
+        [int(value) in validation_ids for value in dataset.instance_ids],
+        dtype=bool,
+    )
+    training_mask: np.ndarray = np.logical_not(validation_mask)
 
     def subset(mask: np.ndarray, label: str) -> PricingDataset:
         metadata = dict(dataset.metadata)
@@ -202,4 +206,4 @@ def split_by_instance(
             metadata=metadata,
         )
 
-    return subset(~validation_mask, "train"), subset(validation_mask, "validation")
+    return subset(training_mask, "train"), subset(validation_mask, "validation")
