@@ -144,9 +144,7 @@ class CVRPTWInstance:
         if not isinstance(raw_customers, list):
             raise ValueError("customers must be a list")
         capacity_value = payload.get("capacity")
-        if isinstance(capacity_value, bool) or not isinstance(
-            capacity_value, (int, float, str)
-        ):
+        if isinstance(capacity_value, bool) or not isinstance(capacity_value, (int, float, str)):
             raise ValueError("capacity must be numeric")
         fixed_vehicle_cost_value = payload.get("fixed_vehicle_cost", 0.0)
         if isinstance(fixed_vehicle_cost_value, bool) or not isinstance(
