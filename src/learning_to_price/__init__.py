@@ -6,7 +6,7 @@ from learning_to_price.column_generation import (
     PricingMode,
     run_column_generation,
 )
-from learning_to_price.domain import CVRPTWInstance, Customer
+from learning_to_price.domain import Customer, CVRPTWInstance
 from learning_to_price.learning import NumpyMLPArcScorer
 
 __all__ = [
