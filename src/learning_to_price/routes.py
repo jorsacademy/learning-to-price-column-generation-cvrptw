@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from itertools import pairwise
 
 from learning_to_price.domain import CVRPTWInstance
 from learning_to_price.geometry import distance_matrix
@@ -24,7 +25,7 @@ class Route:
 
     def arcs(self) -> tuple[tuple[int, int], ...]:
         nodes = (0, *self.customers, 0)
-        return tuple(zip(nodes[:-1], nodes[1:], strict=True))
+        return tuple(pairwise(nodes))
 
 
 @dataclass(frozen=True, slots=True)
