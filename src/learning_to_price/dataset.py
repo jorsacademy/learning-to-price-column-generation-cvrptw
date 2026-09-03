@@ -44,13 +44,11 @@ class PricingDataset:
         return {
             "rows": int(self.features.shape[0]),
             "features": int(self.features.shape[1]),
-            "instances": int(len(np.unique(self.instance_ids))),
-            "iterations": int(
-                len(
-                    np.unique(
-                        np.column_stack((self.instance_ids, self.iteration_ids)),
-                        axis=0,
-                    )
+            "instances": len(np.unique(self.instance_ids)),
+            "iterations": len(
+                np.unique(
+                    np.column_stack((self.instance_ids, self.iteration_ids)),
+                    axis=0,
                 )
             ),
             "positive_rate": self.positive_rate,
