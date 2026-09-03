@@ -84,7 +84,8 @@ def reduced_cost(
     customer_duals: tuple[float, ...] | np.ndarray,
 ) -> float:
     duals = _validate_duals(instance, customer_duals)
-    return route_cost(instance, route) - sum(duals[node - 1] for node in route.customers)
+    dual_sum = sum(float(duals[node - 1]) for node in route.customers)
+    return float(route_cost(instance, route) - dual_sum)
 
 
 def price_routes(
