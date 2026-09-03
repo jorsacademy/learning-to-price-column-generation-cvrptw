@@ -153,8 +153,10 @@ class NumpyMLPArcScorer:
                 sample_weights
                 * (y * np.log(probabilities) + (1.0 - y) * np.log(1.0 - probabilities))
             )
-            loss += 0.5 * config.weight_decay * (
-                float(np.sum(self.w1 * self.w1)) + float(np.sum(self.w2 * self.w2))
+            loss += (
+                0.5
+                * config.weight_decay
+                * (float(np.sum(self.w1 * self.w1)) + float(np.sum(self.w2 * self.w2)))
             )
             losses.append(float(loss))
 
